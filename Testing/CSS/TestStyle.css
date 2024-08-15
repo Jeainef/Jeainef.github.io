@@ -1,0 +1,45 @@
+p {
+    color: #0047AB;
+    text-align: center;
+
+}
+
+b,
+strong,
+ins,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: black;
+    text-align: center;
+}
+
+img {
+    text-align: center;
+}
+
+html {
+    background-color: blanchedalmond;
+}
+
+body {
+    background-color: #90E0EF;
+    border: #0047AB;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+
+    border-style: solid;
+    border-color: black;
+    border-width: 5;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-color: brown;
+}
