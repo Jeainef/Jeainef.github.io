@@ -3,6 +3,7 @@ body {
     background-image: url('../Images/Stars.gif');
     background-color: #03f4ac;
     background-blend-mode: multiply;
+    background-size: contain;
 }
 
 
@@ -79,6 +80,7 @@ h1 {
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
+    text-align: center;
 }
 
 p {
@@ -98,4 +100,48 @@ p {
     padding: 20px;
 
     font-size: 22px;
+}
+
+
+#current-image {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    width: auto;
+    max-height: 650px;
+    box-shadow: 0 0 15px #03f4ac;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #03e9f4;
+}
+
+
+
+#image-thumbs {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.thumb {
+
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin: 5px;
+    cursor: pointer;
+    opacity: .7;
+    transition: .5;
+}
+
+.thumb:hover {
+    opacity: 1;
+    border-style: solid;
+    border-color: #03e9f4;
+    box-shadow: 0 0 15px #03f4ac;
 }
