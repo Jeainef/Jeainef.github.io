@@ -137,6 +137,8 @@ p {
     cursor: pointer;
     opacity: .7;
     transition: .5;
+    border-style: solid;
+    border-color: transparent;
 }
 
 .thumb:hover {
