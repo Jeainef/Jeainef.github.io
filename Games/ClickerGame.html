@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Not cookie clicker</title>
+    <link rel="stylesheet" href="CSS/ClickerGameStyle.css">
+</head>
+
+<body>
+    <div class="topBar">
+        <a href="">hello</a><a href="">testing</a><a href="">hey</a><a href="">borgar</a>
+    </div>
+
+    <div class="game">
+        <div class="LeftColumn">
+            <div id="currentClicks">#</div>
+            <div id="currentCps">#</div>
+            <img src="Images/Burger.png" id="clickerObject" alt="" height="300px" width="500px" onclick="AddBurguers()">
+        </div>
+        <div class="MiddleColumn">
+        </div>
+        <div class="RightColumn">
+            <div class="Upgrade" id="Clicks" onclick="BuyUpgrade('ClicksUpgradeLevel','ClicksCost')">
+                <div id="UpgradeIcon">
+                    <img src="Images/HandCursor.png" alt="HandCursor" class="UpgradeImage">
+                </div>
+                <div id="UpgradeDescription">
+                    <h1>Clicker</h1>
+                    <div style="display: flex; align-items: center;" id="ClicksCost">
+                        <p>Cost: 10</p>
+                        <img src="Images/Burger.png" alt="Burguer" class="UpgradeCostImage">
+                    </div>
+
+                </div>
+                <div class="UpgradeLevel" id="ClicksUpgradeLevel">
+                    <h1></h1>
+                </div>
+                <div class="NextLevel" id="ClicksLevel">
+                    <p>+0.1 bps</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    </div>
+
+
+    <script src="Scripts/ClickerGameScript.js"></script>
+
+</body>
+
+
+</html>
