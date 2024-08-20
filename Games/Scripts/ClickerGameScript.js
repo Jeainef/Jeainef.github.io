@@ -10,12 +10,39 @@ var burgerPerClick = 1;
 var clickContainer = document.getElementById("currentClicks");
 var clickerObject = document.getElementById("clickerObject");
 var cpsContainer = document.getElementById("currentCps");
-
 //ShopItems
 
-var clickerCost = 10;
-var clickerLevel = 0;
-var clickerBps = 0.1;
+const upgrades = [
+    {
+        upgradeName: "clicker",
+        Cost: 10,
+        Level: 0,
+        increase_BPS: 0.1,
+        CostText: document.getElementById("ClickerCost"),
+        LevelText: document.getElementById("ClicksUpgradeLevel"),
+        costMultiplier: 1.12
+    },
+    {
+        upgradeName: "waiter",
+        Cost: 100,
+        Level: 0,
+        increase_BPS: 1,
+        CostText: document.getElementById("WaiterCost"),
+        LevelText: document.getElementById("WaiterUpgradeLevel"),
+        costMultiplier: 1.12
+    },
+    {
+        upgradeName: "restaurant",
+        Cost: 500,
+        Level: 0,
+        increase_BPS: 10,
+        CostText: document.getElementById("RestaurantCost"),
+        LevelText: document.getElementById("RestaurantUpgradeLevel"),
+        costMultiplier: 1.12
+    }
+
+]
+
 
 //Update the game every 0.1 seconds
 var intervalId = window.setInterval(function () {
@@ -27,33 +54,69 @@ clickContainer.innerHTML = "Burguers:" + clicks;
 cpsContainer.innerHTML = "per second: " + bps;
 
 
-function AddBurguers(amount = burgerPerClick) {
+function AddBurguers(amount) {
     clicks = clicks + amount;
     clicksBeautified = Math.round(clicks * 10, 2);
     clicksBeautified = clicksBeautified / 10;
     clickContainer.innerHTML = "Burguers:" + clicksBeautified;
-}
 
+}
+function clickBurger(event) {
+
+    const x = event.offsetX
+    const y = event.offsetY
+
+    const div = document.createElement('div')
+
+    clicksBeautified = Math.round(burgerPerClick * 10, 2);
+    clicksBeautified = clicksBeautified / 10;
+    div.innerHTML = `+${clicksBeautified}`;
+    div.style.cssText = `  font-weight: bold;   text-shadow: 7px 7px 3px #3d3526;
+    color: #ffdb98; position: absolute; left: ${x}px;top: ${y}px;  font-size: 30px; pointer-events: none;`
+    clickerObject.appendChild(div);
+
+    div.classList.add('fade-up');
+    timeout(div);
+    AddBurguers(burgerPerClick);
+
+
+}
+const timeout = (div) => {
+    setTimeout(() => {
+        div.remove()
+    }, 800);
+}
 function Update() {
     AddBurguers(bps / 10);
 }
 
-function BuyUpgrade(level, cost) {
-    if (clicks >= clickerCost) {
+function BuyUpgrade(upgradeName) {
+    const selectedUpgrade = upgrades.find((u) => {
+        if (u.upgradeName === upgradeName) return u
+    })
+    if (clicks >= selectedUpgrade.Cost) {
 
         //Update current burgers
-        clicks -= clickerCost;
-        clickContainer.innerHTML = "Burguers:" + clicks;
+        clicks -= selectedUpgrade.Cost;
+        clicksBeautified = Math.round(clicks * 10, 2);
+        clicksBeautified = clicksBeautified / 10;
+        clickContainer.innerHTML = "Burguers:" + clicksBeautified;
 
         //Update the object info
-        clickerLevel++;
-        document.getElementById(level).innerHTML = "Level: " + clickerLevel;
+        selectedUpgrade.Level++;
+        selectedUpgrade.LevelText.innerHTML = "Level: " + selectedUpgrade.Level;
 
-        clickerCost = clickerCost + clickerLevel;
-        document.getElementById(cost).innerHTML = "Cost: " + clickerCost + '<img src="Images/Burger.png" alt="Burguer" class="UpgradeCostImage"></img>';
+
+
+        selectedUpgrade.Cost *= selectedUpgrade.costMultiplier;
+
+        CostBeautified = Math.round(selectedUpgrade.Cost * 10, 2);
+        CostBeautified = CostBeautified / 10;
+
+        selectedUpgrade.CostText.innerHTML = CostBeautified;
 
         //Update stats
-        bps = bps + clickerBps;
+        bps += selectedUpgrade.increase_BPS;
 
         bpsBeautified = Math.round(bps * 10, 2);
         bpsBeautified = bpsBeautified / 10;

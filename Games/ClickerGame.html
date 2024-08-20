@@ -14,34 +14,73 @@
     </div>
 
     <div class="game">
-        <div class="LeftColumn">
+        <div class="leftColumn">
             <div id="currentClicks">#</div>
             <div id="currentCps">#</div>
-            <img src="Images/Burger.png" id="clickerObject" alt="" height="300px" width="500px" onclick="AddBurguers()">
+            <div id="clickerObject"><img src="Images/Burger.png" alt="" onclick="clickBurger(event)"></div>
         </div>
         <div class="MiddleColumn">
         </div>
         <div class="RightColumn">
-            <div class="Upgrade" id="Clicks" onclick="BuyUpgrade('ClicksUpgradeLevel','ClicksCost')">
+            <div class="Upgrade" id="Clicks" onclick="BuyUpgrade('clicker')">
                 <div id="UpgradeIcon">
                     <img src="Images/HandCursor.png" alt="HandCursor" class="UpgradeImage">
                 </div>
                 <div id="UpgradeDescription">
                     <h1>Clicker</h1>
-                    <div style="display: flex; align-items: center;" id="ClicksCost">
-                        <p>Cost: 10</p>
+                    <div class="UpgradeCost" id="ClicksCost">
+                        <p class="cost_text" id="ClickerCost">10</p>
                         <img src="Images/Burger.png" alt="Burguer" class="UpgradeCostImage">
                     </div>
 
                 </div>
                 <div class="UpgradeLevel" id="ClicksUpgradeLevel">
-                    <h1></h1>
+                    <p>Level 0</p>
                 </div>
                 <div class="NextLevel" id="ClicksLevel">
                     <p>+0.1 bps</p>
                 </div>
             </div>
 
+            <div class="Upgrade" id="Clicks" onclick="BuyUpgrade('waiter')">
+                <div id="UpgradeIcon">
+                    <img src="Images/Waiter.png" alt="HandCursor" class="UpgradeImage">
+                </div>
+                <div id="UpgradeDescription">
+                    <h1>Waiter</h1>
+                    <div class="UpgradeCost" id="ClicksCost">
+                        <p class="cost_text" id="WaiterCost">100</p>
+                        <img src="Images/Burger.png" alt="Burguer" class="UpgradeCostImage">
+                    </div>
+
+                </div>
+                <div class="UpgradeLevel" id="WaiterUpgradeLevel">
+                    <p>Level 0</p>
+                </div>
+                <div class="NextLevel" id="WaiterLevel">
+                    <p>+1 bps</p>
+                </div>
+            </div>
+
+            <div class="Upgrade" id="Clicks" onclick="BuyUpgrade('restaurant')">
+                <div id="UpgradeIcon">
+                    <img src="Images/Restaurant.png" alt="HandCursor" class="UpgradeImage">
+                </div>
+                <div id="UpgradeDescription">
+                    <h1>Restaurant</h1>
+                    <div class="UpgradeCost" id="ClicksCost">
+                        <p class="cost_text" id="RestaurantCost">500</p>
+                        <img src="Images/Burger.png" alt="Burguer" class="UpgradeCostImage">
+                    </div>
+
+                </div>
+                <div class="UpgradeLevel" id="RestaurantUpgradeLevel">
+                    <p>Level 0</p>
+                </div>
+                <div class="NextLevel" id="RestaurantLevel">
+                    <p>+10 bps</p>
+                </div>
+            </div>
 
         </div>
     </div>
