@@ -48,6 +48,9 @@ const upgrades = [
 var intervalId = window.setInterval(function () {
     Update();
 }, 100);
+var autoSave = window.setInterval(function () {
+    Save();
+}, 60000);
 
 
 clickContainer.innerHTML = "Burguers:" + clicks;
@@ -124,4 +127,48 @@ function BuyUpgrade(upgradeName) {
 
 
     }
+}
+
+function Save() {
+    localStorage.clear();
+
+    upgrades.map((upgrade) => {
+        const obj = JSON.stringify({
+            upgradeName: upgrade.upgradeName,
+            Cost: upgrade.Cost,
+            Level: upgrade.Level,
+            increase_BPS: upgrade.increase_BPS,
+            CostText: upgrade.CostText,
+            LevelText: upgrade.LevelText,
+            costMultiplier: upgrade.costMultiplier
+        })
+        localStorage.setItem(upgrade.upgradeName, obj)
+    })
+
+
+    localStorage.setItem("bps", JSON.stringify(bps))
+    localStorage.setItem("clicks", JSON.stringify(clicks))
+    localStorage.setItem("burgerPerClick", JSON.stringify(burgerPerClick))
+}
+
+function Load() {
+    upgrades.map((upgrade) => {
+        const savedValues = JSON.parse(localStorage.getItem(upgrade.upgradeName))
+        upgrade.Cost = savedValues.Cost
+        upgrade.Level = savedValues.Level
+
+        upgrade.increase_BPS = savedValues.increase_BPS
+        upgrade.costMultiplier = savedValues.costMultiplier
+
+        upgrade.LevelText.innerHTML = "Level: " + savedValues.Level
+
+        CostBeautified = Math.round(savedValues.Cost * 10, 2);
+        CostBeautified = CostBeautified / 10;
+        upgrade.CostText.innerHTML = CostBeautified
+    })
+    bps = JSON.parse(localStorage.getItem("bps"));
+    clicks = JSON.parse(localStorage.getItem("clicks"));
+    burgerPerClick = JSON.parse(localStorage.getItem("burgerPerClick"));
+
+
 }
