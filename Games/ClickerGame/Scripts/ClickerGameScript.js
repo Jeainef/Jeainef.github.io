@@ -1,8 +1,10 @@
 
 //Inicialize variables
 
+import { upgrades } from "../Constants/buildings.js";
+import * as Helper from "./helperFunctions.js";
 //Base Stats
-var clicks = 0;
+var clicks = 10000;
 var bps = 0;
 var burgerPerClick = 1;
 
@@ -11,37 +13,6 @@ var clickContainer = document.getElementById("currentClicks");
 var clickerObject = document.getElementById("clickerObject");
 var cpsContainer = document.getElementById("currentCps");
 //ShopItems
-
-const upgrades = [
-    {
-        upgradeName: "clicker",
-        Cost: 10,
-        Level: 0,
-        increase_BPS: 0.1,
-        CostText: document.getElementById("ClickerCost"),
-        LevelText: document.getElementById("ClicksUpgradeLevel"),
-        costMultiplier: 1.12
-    },
-    {
-        upgradeName: "waiter",
-        Cost: 100,
-        Level: 0,
-        increase_BPS: 1,
-        CostText: document.getElementById("WaiterCost"),
-        LevelText: document.getElementById("WaiterUpgradeLevel"),
-        costMultiplier: 1.12
-    },
-    {
-        upgradeName: "restaurant",
-        Cost: 500,
-        Level: 0,
-        increase_BPS: 10,
-        CostText: document.getElementById("RestaurantCost"),
-        LevelText: document.getElementById("RestaurantUpgradeLevel"),
-        costMultiplier: 1.12
-    }
-
-]
 
 
 //Update the game every 0.1 seconds
@@ -59,9 +30,7 @@ cpsContainer.innerHTML = "per second: " + bps;
 
 function AddBurguers(amount) {
     clicks = clicks + amount;
-    clicksBeautified = Math.round(clicks * 10, 2);
-    clicksBeautified = clicksBeautified / 10;
-    clickContainer.innerHTML = "Burguers:" + clicksBeautified;
+    clickContainer.innerHTML = "Burguers:" + Helper.Beautify(clicks);
 
 }
 function clickBurger(event) {
@@ -71,9 +40,7 @@ function clickBurger(event) {
 
     const div = document.createElement('div')
 
-    clicksBeautified = Math.round(burgerPerClick * 10, 2);
-    clicksBeautified = clicksBeautified / 10;
-    div.innerHTML = `+${clicksBeautified}`;
+    div.innerHTML = `+${Helper.Beautify(burgerPerClick)}`;
     div.style.cssText = `  font-weight: bold;   text-shadow: 7px 7px 3px #3d3526;
     color: #ffdb98; position: absolute; left: ${x}px;top: ${y}px;  font-size: 30px; pointer-events: none;`
     clickerObject.appendChild(div);
@@ -94,6 +61,7 @@ function Update() {
 }
 
 function BuyUpgrade(upgradeName) {
+    console.log(upgradeName)
     const selectedUpgrade = upgrades.find((u) => {
         if (u.upgradeName === upgradeName) return u
     })
@@ -101,29 +69,23 @@ function BuyUpgrade(upgradeName) {
 
         //Update current burgers
         clicks -= selectedUpgrade.Cost;
-        clicksBeautified = Math.round(clicks * 10, 2);
-        clicksBeautified = clicksBeautified / 10;
-        clickContainer.innerHTML = "Burguers:" + clicksBeautified;
+
+        clickContainer.innerHTML =
+            "Burguers:" + Helper.Beautify(clicks);
 
         //Update the object info
         selectedUpgrade.Level++;
-        selectedUpgrade.LevelText.innerHTML = "Level: " + selectedUpgrade.Level;
+        selectedUpgrade.LevelText.innerHTML = "Level " + selectedUpgrade.Level;
 
 
 
         selectedUpgrade.Cost *= selectedUpgrade.costMultiplier;
-
-        CostBeautified = Math.round(selectedUpgrade.Cost * 10, 2);
-        CostBeautified = CostBeautified / 10;
-
-        selectedUpgrade.CostText.innerHTML = CostBeautified;
+        selectedUpgrade.CostText.innerHTML = Helper.Beautify(selectedUpgrade.Cost);
 
         //Update stats
         bps += selectedUpgrade.increase_BPS;
 
-        bpsBeautified = Math.round(bps * 10, 2);
-        bpsBeautified = bpsBeautified / 10;
-        cpsContainer.innerHTML = "per second: " + bpsBeautified;
+        cpsContainer.innerHTML = "per second: " + Helper.Beautify(bps);
 
 
     }
@@ -160,15 +122,21 @@ function Load() {
         upgrade.increase_BPS = savedValues.increase_BPS
         upgrade.costMultiplier = savedValues.costMultiplier
 
-        upgrade.LevelText.innerHTML = "Level: " + savedValues.Level
+        upgrade.LevelText.innerHTML = "Level " + savedValues.Level
 
-        CostBeautified = Math.round(savedValues.Cost * 10, 2);
-        CostBeautified = CostBeautified / 10;
-        upgrade.CostText.innerHTML = CostBeautified
+        upgrade.CostText.innerHTML = Helper.Beautify(savedValues.Cost);
     })
     bps = JSON.parse(localStorage.getItem("bps"));
+    cpsContainer.innerHTML = "per second: " + Helper.Beautify(bps);
     clicks = JSON.parse(localStorage.getItem("clicks"));
     burgerPerClick = JSON.parse(localStorage.getItem("burgerPerClick"));
 
 
 }
+
+
+window.BuyUpgrade = BuyUpgrade;
+window.clickBurger = clickBurger;
+window.Save = Save;
+window.Load = Load;
+window.setInterval = setInterval

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Not cookie clicker</title>
+    <link rel="stylesheet" href="CSS/ClickerGameStyle.css">
+</head>
+
+<body>
+    <div class="topBar">
+        <a href="">hello</a><a href="">testing</a><a href="">hey</a><a href="">borgar</a><button class="util_button"
+            onclick="Save()">SAVE</button><button class="util_button" onclick="Load()">LOAD</button>
+    </div>
+
+    <div class="game">
+        <div class="leftColumn">
+            <div id="currentClicks">#</div>
+            <div id="currentCps">#</div>
+            <div id="clickerObject"><img src="Images/Burger.png" alt="" onclick="clickBurger(event)"></div>
+        </div>
+        <div class="MiddleColumn">
+        </div>
+
+        <script id="upgrade_template" type="text/template">
+
+            <div class="Upgrade" id="Clicks" onclick="BuyUpgrade('{{name}}')">
+                <div id="UpgradeIcon">
+                    <img src="{{image}}" alt="HandCursor" class="UpgradeImage">
+                </div>
+                <div id="UpgradeDescription">
+                    <h1>{{name}}</h1>
+                    <div class="UpgradeCost" id="ClicksCost">
+                        <p class="cost_text" id="{{name}}Cost">{{cost}}</p>
+                        <img src="Images/Burger.png" alt="Burguer" class="UpgradeCostImage">
+                    </div>
+
+                </div>
+                <div class="UpgradeLevel" id="{{name}}UpgradeLevel">
+                    <p>{{level}}</p>
+                </div>
+                <div class="NextLevel" id="{{name}}Level">
+                    <p>{{increase}}</p>
+                </div>
+            </div>
+
+        </script>
+        <div class="RightColumn" id="upgrades_container">
+
+        </div>
+
+    </div>
+
+    </div>
+
+
+    <script src="Scripts/ClickerGameScript.js" type="module"></script>
+
+
+</body>
+
+</html>

@@ -103,7 +103,9 @@ p {
 }
 
 .RightColumn {
+    height: auto;
     width: 30%;
+    overflow-y: scroll;
 }
 
 .topBar {
@@ -244,4 +246,22 @@ img {
         transform: translateY(-18px);
         opacity: 0;
     }
+}
+
+::-webkit-scrollbar {
+    width: 25px;
+
+}
+
+::-webkit-scrollbar-track {
+    background: #f0f0f0;
+
+}
+
+::-webkit-scrollbar-thumb {
+    background: gray;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
