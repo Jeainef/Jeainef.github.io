@@ -9,7 +9,7 @@
 
 <body>
 
-    <div class="CalculatorBody">
+    <div class="CalculatorBody Classic">
         <div class="ResultBox" id="Result">0</div>
         <button onclick="AddValue('1')">1</button>
         <button onclick="AddValue('2')">2</button>
@@ -27,10 +27,19 @@
         <button onclick="AddValue('0')">0</button>
         <button onclick="AddValue(',')">,</button>
         <button onclick="Operate()">=</button>
+        <button onclick="AddOperation('^'), Operate()">X<sup>2</sup></button>
+        <button onclick="AddOperation('sqrt'), Operate()">√</button>
+    </div>
+    <div class="styleList Classic">
+        <button onclick="ReplaceStyle(0)">classic</button>
+        <button onclick="ReplaceStyle(1) ">hacker</button>
+        <button onclick="ReplaceStyle(2) ">water</button>
+        <button onclick="ReplaceStyle(3) ">forest</button>
+        <button onclick="ReplaceStyle(4) ">desert</button>
     </div>
 
-
     <script src="Scripts/Calculator.js"></script>
+    <script src="Scripts/Styler.js"></script>
 </body>
 
 </html>

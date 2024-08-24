@@ -1,3 +1,11 @@
+body {
+    display: flex;
+    padding: 25px;
+    gap: 10px;
+    height: auto;
+
+}
+
 .CalculatorBody {
     width: 415px;
     height: auto;
@@ -6,7 +14,7 @@
     gap: 5px;
     grid-template-columns: 100px 100px 100px 100px;
     column-gap: 5px;
-    background-color: black;
+    border-radius: 15px;
 }
 
 .CalculatorBody button {
@@ -14,21 +22,77 @@
     height: 100%;
     font-size: 72px;
     border-radius: 10px;
-    background-color: #4b4b4b;
-    color: white;
 }
 
 .ResultBox {
     width: 100%;
-    background-color: white;
-    color: black;
     height: 100%;
     font-size: 72px;
     border-radius: 10px;
     text-align: right;
     grid-area: 1 / 1 / 1 / 5;
+    overflow: hidden;
 }
 
-.CalculatorBody button:hover {
+
+
+.styleList {
+    width: auto;
+    height: auto;
+    display: grid;
+    grid-template-columns: auto;
+    gap: 20px;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.styleList button {
+    width: 300px;
+    height: 100%;
+    font-size: 36px;
+    border-radius: 10px;
+
+}
+
+
+.Classic {
+    background-color: #242424;
+    color: white;
+}
+
+.Classic button {
+    background-color: #4b4b4b;
+    color: white;
+}
+
+.Classic .ResultBox {
+    background-color: #313131;
+    color: white;
+}
+
+.Classic button:hover {
     background-color: #333333;
+}
+
+
+.Hacker {
+    background-color: black;
+    color: green;
+}
+
+.Hacker .ResultBox {
+    background-color: rgb(24, 24, 24);
+    color: #00ff00;
+}
+
+.Hacker button {
+    background-color: #252525;
+    color: #00ff00;
+    border-style: solid;
+    border-width: 3px 0px 0px 3px;
+    border-color: #1f490e;
+}
+
+.Hacker button:hover {
+    background-color: #1f490e;
 }
