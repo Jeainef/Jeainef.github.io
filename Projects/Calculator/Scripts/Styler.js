@@ -13,7 +13,15 @@ const styles = [
     },
     {
         ID: 2,
+        name: 'Water'
+    },
+    {
+        ID: 3,
         name: 'Forest'
+    },
+    {
+        ID: 4,
+        name: 'Desert'
     }
 ]
 function ReplaceStyle(id) {

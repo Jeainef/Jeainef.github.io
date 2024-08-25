@@ -102,3 +102,63 @@ body {
     background-color: #1f490e;
     box-shadow: 0 0 15px #00ff00;
 }
+
+.Water {
+    background-image: linear-gradient(rgb(0, 204, 255), rgb(22, 0, 119));
+    color: rgb(0, 183, 255);
+    font-family: 'Courier New', Courier, monospace;
+    border-style: solid;
+    border-color: #252525;
+
+}
+
+.Water .ResultBox {
+    background-color: rgb(0, 82, 102);
+    color: rgb(255, 255, 255);
+
+}
+
+.Water button {
+    background-color: rgb(0, 204, 255);
+    color: rgb(0, 0, 0);
+    letter-spacing: 2px;
+    border-style: solid;
+    border-color: #252525;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.Water button:hover {
+    background-color: rgb(0, 161, 201);
+    color: white;
+}
+
+.Forest {
+    background-image: linear-gradient(rgb(20, 85, 0), rgb(88, 53, 0), rgb(20, 85, 0));
+    color: rgb(0, 183, 255);
+    font-family: 'Courier New', Courier, monospace;
+    border-style: solid;
+    border-color: #252525;
+
+}
+
+.Forest .ResultBox {
+    background-color: rgb(0, 51, 3);
+    color: rgb(229, 255, 0);
+
+}
+
+.Forest button {
+    background-color: rgb(45, 192, 0);
+    color: rgb(128, 62, 0);
+    letter-spacing: 2px;
+    border-style: solid;
+    border-color: #252525;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.Forest button:hover {
+    background-color: rgb(110, 53, 0);
+    color: white;
+}
