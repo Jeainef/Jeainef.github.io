@@ -78,6 +78,8 @@ body {
 .Hacker {
     background-color: black;
     color: green;
+    font-family: 'Courier New', Courier, monospace;
+
 }
 
 .Hacker .ResultBox {
@@ -91,8 +93,12 @@ body {
     border-style: solid;
     border-width: 3px 0px 0px 3px;
     border-color: #1f490e;
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+
 }
 
 .Hacker button:hover {
     background-color: #1f490e;
+    box-shadow: 0 0 15px #00ff00;
 }

@@ -139,4 +139,4 @@ window.BuyUpgrade = BuyUpgrade;
 window.clickBurger = clickBurger;
 window.Save = Save;
 window.Load = Load;
-window.setInterval = setInterval
+window.setInterval = setInterval;

@@ -1,4 +1,5 @@
 
+import { Refresh } from "./Calculator.js";
 var currentStyle = "Classic"
 
 const styles = [
@@ -21,4 +22,6 @@ function ReplaceStyle(id) {
     })
     document.body.innerHTML = document.body.innerHTML.replaceAll(currentStyle, newStyle.name);
     currentStyle = newStyle.name;
+    Refresh();
 }
+window.ReplaceStyle = ReplaceStyle;

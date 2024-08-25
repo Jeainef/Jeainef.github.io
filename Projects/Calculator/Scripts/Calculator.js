@@ -8,8 +8,9 @@ var ResultHTML = document.getElementById("Result");
 
 
 function Operate() {
-    floatValue = parseFloat(value);
-    floatResult = parseFloat(result)
+    console.log(result + "   " + value);
+    var floatValue = parseFloat(value);
+    var floatResult = parseFloat(result)
     switch (operation) {
         case "+":
             result = floatResult + floatValue;
@@ -53,28 +54,32 @@ function AddValue(number) {
 
 
     console.log(number)
-    if (ResultHTML.innerHTML === "0") {
-        ResultHTML.innerHTML = number;
-    }
-    else {
-        ResultHTML.innerHTML += number;
-    }
     if (operation === "") {
         if (result === "0") {
             result = number;
+            ResultHTML.innerHTML = number;
         }
         else {
             result += number;
+            ResultHTML.innerHTML += number;
         }
     }
     else {
         if (value === "0") {
             value = number;
-
+            ResultHTML.innerHTML = number;
         }
         else {
             value += number;
+            ResultHTML.innerHTML += number;
         }
     }
 
 }
+export function Refresh() {
+    ResultHTML = document.getElementById("Result");
+}
+
+window.AddValue = AddValue;
+window.AddOperation = AddOperation;
+window.Operate = Operate;
