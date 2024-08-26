@@ -17,7 +17,7 @@ const styles = [
     },
     {
         ID: 3,
-        name: 'Forest'
+        name: 'Wood'
     },
     {
         ID: 4,

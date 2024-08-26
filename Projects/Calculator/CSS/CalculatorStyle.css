@@ -119,10 +119,11 @@ body {
 }
 
 .Water button {
-    background-color: rgb(0, 204, 255);
-    color: rgb(0, 0, 0);
+    background-color: rgb(0, 73, 92);
+    color: rgb(255, 255, 255);
     letter-spacing: 2px;
     border-style: solid;
+    border-radius: 50%;
     border-color: #252525;
     font-family: 'Times New Roman', Times, serif;
 
@@ -130,35 +131,76 @@ body {
 
 .Water button:hover {
     background-color: rgb(0, 161, 201);
-    color: white;
+    color: rgb(229, 255, 0);
 }
 
-.Forest {
-    background-image: linear-gradient(rgb(20, 85, 0), rgb(88, 53, 0), rgb(20, 85, 0));
+.Wood {
+    background-image: url("../Images/Wood.jpg");
     color: rgb(0, 183, 255);
     font-family: 'Courier New', Courier, monospace;
     border-style: solid;
     border-color: #252525;
+    border-radius: 0px;
 
 }
 
-.Forest .ResultBox {
-    background-color: rgb(0, 51, 3);
+.Wood .ResultBox {
+    background-color: rgb(0, 0, 0);
     color: rgb(229, 255, 0);
+    border-radius: 6px;
+
 
 }
 
-.Forest button {
-    background-color: rgb(45, 192, 0);
+.Wood button {
+    background-image: url("../Images/Wood2.avif");
     color: rgb(128, 62, 0);
     letter-spacing: 2px;
     border-style: solid;
     border-color: #252525;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 0px;
+}
+
+.Wood button:hover {
+    background-color: rgb(110, 53, 0);
+    color: white;
+}
+
+.Desert {
+    background-image: linear-gradient(rgb(209, 112, 0), rgb(211, 162, 0),
+            rgb(209, 112, 0), rgb(211, 162, 0),
+            rgb(209, 112, 0), rgb(211, 162, 0),
+            rgb(209, 112, 0), rgb(211, 162, 0),
+            rgb(209, 112, 0), rgb(211, 162, 0),
+            rgb(209, 112, 0), rgb(211, 162, 0),
+            rgb(209, 112, 0), rgb(211, 162, 0));
+
+    color: rgb(0, 183, 255);
+    font-family: 'Courier New', Courier, monospace;
+    border-style: solid;
+    border-color: #252525;
+    border-radius: 0px;
 
 }
 
-.Forest button:hover {
-    background-color: rgb(110, 53, 0);
-    color: white;
+.Desert .ResultBox {
+    background-color: rgb(37, 35, 0);
+    color: rgb(43, 184, 0);
+
+
+}
+
+.Desert button {
+    background-color: rgb(89, 128, 0);
+    color: rgb(128, 62, 0);
+    letter-spacing: 2px;
+    border-style: solid;
+    border-color: #252525;
+    font-family: sans-serif;
+}
+
+.Desert button:hover {
+    background-color: rgb(124, 177, 0);
+    color: rgb(252, 17, 0);
 }
