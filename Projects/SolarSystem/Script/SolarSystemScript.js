@@ -28,11 +28,14 @@ var starShimmerSpeed=0.03;
 var planet;
 var planetRadius=70;
 var mouseDrag=0.1;
-var planetColor="Red";
+var planetColors=[
+    "#eddbad","#e2bf7d","#c3924f","#fceead","#c4b08b"
+]
+var planetStripes=50;
 
 //Sattelites
 var satellites=[]
-var satelliteColors = ["#FFAA00", "#FFBC36", "#CC8800","#002F75","#0052CC"]
+var satelliteColors = ["#eddbad","#e2bf7d","#c3924f","#fceead","#c4b08b"]
 var SatelliteRadius=5;
 var satelliteSpeed=0.1;
 var maxSatelliteDistance=200;
@@ -70,12 +73,16 @@ function Star(x, y, radius, color) {
         this.Draw();
     };
 }
-function Planet(x, y, radius, color){
+function Planet(x, y, radius){
     this.x = x;
     this.y = y;
     this.radius = radius;
-    this.color = color;
+    this.color=c.createLinearGradient(0,0,innerWidth,innerHeight);
 
+    for (var i=0;i<planetStripes;i++) {
+        this.color.addColorStop(i/planetStripes, planetColors[Math.floor(Math.random()*planetColors.length)]);
+    };
+    
     //Drag
     this.lastPosition={x:this.x,y:this.y};
 
@@ -144,7 +151,10 @@ function Init(){
     canvas.width = window.innerWidth - 2;
     canvas.height = window.innerHeight - 2;
     stars=[];
-    planet= new Planet(canvas.width/2,canvas.height/2,planetRadius,planetColor)
+
+  
+
+    planet= new Planet(canvas.width/2,canvas.height/2,planetRadius)
     for (var int = 0; int < starNumber; int++) {
 
         var x = Math.random() * canvas.width;
@@ -170,7 +180,7 @@ function Init(){
 
 function Animate() {
     requestAnimationFrame(Animate);
-    c.fillStyle='rgba(0,0,0,0.07)'
+    c.fillStyle='rgba(0,0,0,0.3)'
     c.fillRect(0, 0, canvas.width, canvas.height);
   
     for (var i = 0; i < stars.length; i++) {
