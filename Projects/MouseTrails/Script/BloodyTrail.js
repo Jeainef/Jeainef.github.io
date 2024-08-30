@@ -77,18 +77,20 @@ function HandleParticles() {
 function HandleLine() {
 
     if (points.length > 0) {
-        c.createLinearGradient
-        points[0].Update();
 
-        c.strokeStyle = points[0].color;
+
+        //Update the first point
         points[0].Update();
 
         if (points[0].width < 0.2) {
             points.splice(0, 1)
         }
         for (var i = 1; i < points.length; i++) {
-            c.beginPath();
+            //Draw the line between the point i-1 on the points array to the point i
             points[i].Update();
+
+
+            c.beginPath();
             c.lineWidth = points[i].width;
             c.strokeStyle = points[i].color;
             c.lineCap = "round"
@@ -96,7 +98,7 @@ function HandleLine() {
             c.lineTo(points[i].x, points[i].y);
             c.stroke();
 
-
+            //Delete from array if width is too small
             if (points[i].width < 0.2) {
                 points.splice(1, 1)
                 i--;
@@ -105,11 +107,9 @@ function HandleLine() {
         }
 
     }
-    console.log(points.length);
-
 }
 function Animate() {
-    c.fillStyle = 'rgba(0,0,0,0.5)'
+    c.fillStyle = 'rgba(0,0,0,0.3)'
     c.fillRect(0, 0, canvas.width, canvas.height);
 
     requestAnimationFrame(Animate);
