@@ -9,6 +9,9 @@ var mouse = {
 
 var particles = []
 var points = []
+var BloodColors = [
+    "#660000", "#8B0000", "#800000", "#CC1100", "#DC143C"
+]
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
@@ -51,10 +54,10 @@ function Particle() {
     this.radius = Math.random() * 5 + 5;
     this.dy = Math.random() * 2;
     this.dx = Math.random() * 0.5 - 0.25;
-
+    this.color = BloodColors[Math.floor(Math.random() * BloodColors.length)];
     this.Draw = function () {
         c.beginPath()
-        c.fillStyle = "Red"
+        c.fillStyle = this.color;
         c.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
         c.fill();
     }
