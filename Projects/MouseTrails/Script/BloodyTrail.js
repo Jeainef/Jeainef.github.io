@@ -46,7 +46,6 @@ function LinePoint(x, y) {
         this.width -= 0.02;
         this.color = 'hsl(356, 100%, ' + this.darken + '%)'
     }
-
 }
 function Particle() {
     this.x = mouse.x;
