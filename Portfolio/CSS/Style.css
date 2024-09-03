@@ -10,75 +10,113 @@
  */
 
 
-body {
-    background-color: black;
-    display: block;
-    font-family:Georgia, 'Times New Roman', Times, serif
-}
+ body {
+     background-color: black;
+     display: block;
+     font-family: Georgia, 'Times New Roman', Times, serif
+ }
 
-.Container {
-    display: flex;
-    margin: auto;
-    width: 75%;
-    gap: 3%;
-    flex-wrap:wrap;
-    justify-content:center;
-    align-items: flex-start;
-    height: auto;
-}
+ .Container {
+     display: flex;
+     margin: auto;
+     width: 75%;
+     gap: 3%;
+     flex-wrap: wrap;
+     justify-content: center;
+     align-items: flex-start;
+     height: auto;
+ }
 
-.box {
-    text-align: center;
-    flex-shrink: 1;
-    max-width: 95%;
-    max-height: 95%;
-    min-width: 0;
-    min-height: 0;
-    margin: 10px;
-}
-h1,h2{
-    color: #3DCDD4;
-    letter-spacing: 2px;
-    font-weight: bold;
-}
-p{
-    color: #3DCDD4;
-}
-.box h1 {
-    font-size: 40px;
+ .box {
+     flex-shrink: 1;
+     max-width: 95%;
+     max-height: 95%;
+     min-width: 0;
+     min-height: 0;
+     margin: 10px;
+ }
 
-}
 
-.box p {
-    font-size: 20px;
+ h1,
+ h2 {
+     color: #3DCDD4;
+     letter-spacing: 2px;
+     font-weight: bold;
+     text-align: center;
+ }
 
-}
+ p {
+     color: #3DCDD4;
+ }
 
-.box img {
-    max-height: 350px;
-    width: 100%;
-    text-align: left;
-    object-fit: scale-down;
-}
+ .box h1 {
+     font-size: 72px;
 
-.Border {
-    border: solid;
-    border-width: 5px;
-    border-color: #42DDE5;
-}
-.Skills_container{
+ }
 
-    color: #3DCDD4;
+ .box p,
+ .skill_box h2 {
+     font-size: 40px;
 
-}
-.Container_Skill{
-    display: flex;
-    margin: auto;
-    flex-direction: row;
-    width: auto;
-    gap: 15px;
-    flex-wrap:wrap;
-    justify-content:flex-start;
-    align-items: flex-start;
-    height: auto;
-}
+ }
+
+ .box h2,
+ .skill_box h2 {
+     font-size: 56px;
+
+ }
+
+ .box img {
+     max-height: 750px;
+     width: 100%;
+     text-align: left;
+     object-fit: scale-down;
+ }
+
+ .skill_box {
+     flex-shrink: 1;
+     width: 95%;
+     min-height: 0;
+     margin: 10px;
+     text-align: left;
+ }
+
+ .skill_box h2 {
+
+     text-align: left;
+ }
+
+ .Border {
+     border: solid;
+     border-width: 5px;
+     border-color: #42DDE5;
+ }
+
+ .Skills_container {
+
+     color: #3DCDD4;
+     font-size: 72px;
+ }
+
+
+
+ .Container_Skill {
+     width: 75%;
+     display: flex;
+     flex-direction: row;
+     width: auto;
+     gap: 15px;
+     flex-wrap: wrap;
+     justify-content: flex-start;
+     align-items: flex-start;
+     height: auto;
+ }
+
+ .box .Resume_link {
+     font-size: 72px;
+     border: solid;
+     border-width: 7px;
+     border-color: #42DDE5;
+     text-decoration: none;
+     color: red;
+ }
