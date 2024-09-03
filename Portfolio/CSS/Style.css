@@ -66,3 +66,19 @@ p{
     border-width: 5px;
     border-color: #42DDE5;
 }
+.Skills_container{
+
+    color: #3DCDD4;
+
+}
+.Container_Skill{
+    display: flex;
+    margin: auto;
+    flex-direction: row;
+    width: auto;
+    gap: 15px;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+    align-items: flex-start;
+    height: auto;
+}
