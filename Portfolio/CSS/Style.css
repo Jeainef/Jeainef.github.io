@@ -59,6 +59,9 @@ p{
     width: 100%;
     text-align: left;
     object-fit: scale-down;
+
+    box-shadow: 30px 30px 130px 3px #d80f0f;
+    border-radius: 30%;
 }
 
 .Border {
@@ -66,10 +69,20 @@ p{
     border-width: 5px;
     border-color: #42DDE5;
 }
-.Skills_container{
+.Skill{
 
     color: #3DCDD4;
+    border: solid;
+    border-width: 3px;
+    border-color: #42DDE5;
+    padding: 5px;
+    transition-duration: 0.4s;
 
+}
+.Skill:hover{
+    background-color: #42DDE5;
+    color:black;
+    box-shadow: 0 0 15px 5px #267F84;
 }
 .Container_Skill{
     display: flex;
