@@ -90,3 +90,10 @@
     align-items: flex-start;
     height: auto;
 }
+.skill_box{
+    width: 75%;
+
+}
+.skill_box h2,h1{
+    text-align: left;
+}
