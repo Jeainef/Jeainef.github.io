@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -72,15 +73,26 @@
 			gap: 2rem;
 		}
 
+		#media video,
+		#media iframe {
+			border-radius: 50%;
+			border-style: solid;
+			border-width: 2px;
+			border-color: aqua;
+			object-fit: cover;
+		}
+
 		/* Air */
 	</style>
 </head>
+
 <body>
 	<section id="feature">
 		<div id="content">
 			<header>
 				<h2>Lightning-Fast Data Transfers</h2>
-				<p class="large muted">Experience the power of lightning-fast data transfers, a standout feature of this revolutionary encryption solution.</p>
+				<p class="large muted">Experience the power of lightning-fast data transfers, a standout feature of this
+					revolutionary encryption solution.</p>
 			</header>
 
 			<div id="grid">
@@ -98,8 +110,16 @@
 		</div>
 
 		<div id="media">
-			<!-- Air -->
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/fWxTDv5IGi0?si=c_noF3HsVdK4o5C6"
+				title="YouTube video player" frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+			<video src="videos/video-1@c.mp4" width="560" height="315" controls muted
+				poster="images/video-poster.jpg">This
+				browser doesnt support html5 video tag.</video>
 		</div>
 	</section>
 </body>
+
 </html>
