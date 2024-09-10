@@ -54,6 +54,8 @@
      color: white;
      padding: 1rem;
  }
+ 
+
 
  section {
      height: 100vh;
@@ -85,7 +87,53 @@
      color: black;
      letter-spacing: 0.1rem;
  }
+ .submenu:hover>a {
+    padding:0;
+    color: white;
+}
+ .submenu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
 
+.submenu ul {
+    position: absolute;
+    top: 0;
+    left: 4.5rem;
+
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    text-align: left;
+    transition-duration: .5s;
+    transform: translateX(-3rem);
+}
+
+.submenu:hover ul {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+.submenu ul li{
+    transition-duration: 0.3s;
+}
+.submenu ul li:hover{
+    background-color: #2c2c2c;
+    padding-left: .5rem;
+    border-radius: .5rem;
+}
+nav ul a:hover {
+    color: white;
+    padding: 1rem;
+}
+.submenu a:hover{
+    padding:0;
+    color: white;
+}
  .page_container {
      scroll-snap-type: y mandatory;
      overflow-y: scroll;
@@ -96,7 +144,7 @@
 
      display: flex;
      margin: auto;
-     width: 75%;
+     width: 100%;
      gap: 15%;
      flex-wrap: wrap;
      justify-content: center;
@@ -108,8 +156,8 @@
 
  .box {
      flex-shrink: 1;
-     max-width: 95%;
-     max-height: 95%;
+     max-width: 75%;
+     max-height: 75%;
      min-width: 0;
      min-height: 0;
      margin: 1rem;
@@ -146,9 +194,10 @@
  }
 
  .box img {
-     max-height: 350px;
+     max-height: 20rem;
+     min-height: 0;
      width: 100%;
-     text-align: left;
+     text-align: center;
      object-fit: scale-down;
 
      box-shadow: 2rem 2rem 6rem .1rem #d80f0f;
