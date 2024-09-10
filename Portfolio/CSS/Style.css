@@ -60,11 +60,11 @@
      display: flex;
      justify-content: center;
      align-items: center;
-     scroll-snap-align: start;
+     scroll-snap-align: center;
 
      animation: appear linear;
      animation-timeline: view();
-     animation-range: entry 0 cover 20%;
+     animation-range: entry 0 cover 45%;
  }
 
  .resume {
@@ -179,7 +179,10 @@
      background-color: #42DDE5;
      color: black;
      box-shadow: 0 0 15px 5px #267F84;
+     padding: 0.5rem;
+     font-size: 26px;
  }
+
 
  .Container_Skill {
      display: flex;
