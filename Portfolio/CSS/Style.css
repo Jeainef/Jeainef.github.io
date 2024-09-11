@@ -99,10 +99,22 @@
      transition-property: color, background-color, letter-spacing;
  }
 
- .resume:hover {
-     background-color: #d80f0f;
+ .resume a {
+     text-decoration: none;
+     color: #d80f0f;
+
+     transition-duration: .5s;
+     transition-property: color, background-color, letter-spacing;
+ }
+
+ .resume:hover a {
      color: black;
      letter-spacing: 0.1rem;
+ }
+
+ .resume:hover {
+     background-color: #d80f0f;
+
  }
 
  .submenu:hover>a {
@@ -177,6 +189,28 @@
      height: auto;
 
 
+ }
+
+ .Container i {
+     color: #6df8ff;
+     font-size: 2.5rem;
+     padding: .8rem;
+     border: 0.1rem solid;
+     border-radius: 50%;
+     text-align: center;
+     margin: 2rem;
+
+     transition-duration: .3s;
+ }
+
+ .Container i:hover {
+     font-size: 2.2rem;
+     padding: .5rem;
+     color: #d80f0f;
+ }
+
+ .Center {
+     text-align: center;
  }
 
  .box {
@@ -255,6 +289,7 @@
      box-shadow: 0 0 15px 5px #267F84;
      padding: 0.5rem;
      font-size: 26px;
+     cursor: pointer;
  }
 
 
@@ -339,8 +374,8 @@
  }
 
  #current-image:hover {
-     box-shadow: .5rem .5rem .5rem .1rem #d80f0f;
-     height: 26rem;
+     box-shadow: 0rem 0rem 3rem .3rem gray;
+     height: 30rem;
  }
 
  #image-thumbs {
