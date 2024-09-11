@@ -19,3 +19,10 @@ for (var i = 1; i <= 7; i++) {
     );
 }
 
+$(document).on('click', 'a[href^="#"]', function (event) {
+    event.preventDefault();
+
+    $('html, body').animate({
+        scrollTop: $($.attr(this, 'href')).offset().top
+    }, 500);
+});
