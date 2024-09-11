@@ -181,7 +181,7 @@
 
      display: flex;
      margin: auto;
-     width: 100%;
+     width: 80%;
      gap: 15%;
      flex-wrap: wrap;
      justify-content: center;
@@ -198,7 +198,7 @@
      border: 0.1rem solid;
      border-radius: 50%;
      text-align: center;
-     margin: 2rem;
+     margin: 1rem;
 
      transition-duration: .3s;
  }
