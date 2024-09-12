@@ -4,7 +4,7 @@
 import { upgrades } from "../Constants/buildings.js";
 import * as Helper from "./helperFunctions.js";
 //Base Stats
-var clicks = 10000;
+var clicks = 0;
 var bps = 0;
 var burgerPerClick = 1;
 
