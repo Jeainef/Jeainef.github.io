@@ -64,8 +64,8 @@
      position: absolute;
      top: 3rem;
      display: flex;
-     width: 70vh;
-     justify-content: space-evenly;
+     width: 80vh;
+     justify-content: center;
      gap: 5rem;
  }
 
