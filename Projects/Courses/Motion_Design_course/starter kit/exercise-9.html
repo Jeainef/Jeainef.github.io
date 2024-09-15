@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,11 +39,79 @@
 		}
 
 		/* Air */
+		svg {
+			width: 20rem;
+			font-weight: 700;
+		}
+
+		svg text {
+			font-size: 5rem;
+			stroke-width: 2;
+			letter-spacing: -6px;
+		}
+
+		svg text.text-body {
+			stroke: var(--loader-text-color);
+			animation: 4s infinite alternate animate-stroke;
+		}
+
+		svg text.dot {
+			stroke: var(--loader-dot-color);
+			fill: var(--loader-dot-color);
+			animation: 4s infinite alternate animate-dot;
+		}
+
+		@keyframes animate-dot {
+
+			0%,
+			60% {
+				opacity: 0;
+			}
+
+			100% {
+				opacity: 1;
+			}
+		}
+
+		@keyframes animate-stroke {
+			0% {
+				fill: transparent;
+				stroke: var(--loader-text-color);
+				stroke-width: 3;
+				stroke-dashoffset: 25%;
+				stroke-dasharray: 0 32%;
+			}
+
+			50% {
+				fill: transparent;
+				stroke: var(--loader-text-color);
+				stroke-width: 3;
+			}
+
+			80%,
+			100% {
+				fill: var(--loader-text-color);
+				stroke: transparent;
+				stroke-width: 0;
+				stroke-dashoffset: -25%;
+				stroke-dasharray: 32% 0;
+			}
+		}
 	</style>
 </head>
+
 <body>
 	<div class="loader-container">
 		<!-- Air -->
+		<svg viewbox="0 0 400 160">
+			<text x="50%" y="50%" dy=".32em" text-anchor="middle" class="text-body">
+				Graphix
+			</text>
+			<text x="50%" y="50%" dy=".32em" dx="2.1em" text-anchor="middle" class="text-body">
+				.
+			</text>
+		</svg>
 	</div>
 </body>
+
 </html>
