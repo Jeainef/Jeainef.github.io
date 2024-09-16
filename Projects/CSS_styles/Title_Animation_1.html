@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>title-animation</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #211f1f;
+            display: grid;
+            place-content: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        .titleText{
+            padding: 0;
+            margin: 0;
+            color: white;
+            text-align: center;
+            
+            font-size: 4rem;
+            letter-spacing: -.2rem;
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+          }
+        .titleTextContainer{
+           display: flex;
+           align-items: center;
+           justify-content: center;
+            position: relative;
+            height: 4rem;
+            animation: 3s ease textAppear;
+        }
+        .titleTextContainer::before{
+            position: absolute;
+            top: 100%;
+            content: "";
+            width: 100%;
+            height: .5rem;
+            background: linear-gradient(to right,red,white,orange);
+
+            animation: 3s ease  linesExpand;
+            opacity: 0;
+        }
+        .titleTextContainer::after{
+            position: absolute;
+            top: 0;
+            content: "";
+            width: 100%;
+            height: .5rem;
+            background: linear-gradient(to right,red,white,orange);
+            animation: 3s ease  linesExpand;
+            opacity: 0;
+        }
+        @keyframes linesExpand{
+            0%{
+                width: 0rem;
+                opacity:1
+            }
+            50%{
+                width: 100%;
+                opacity:1
+            }
+            60%{
+                opacity: 1;
+            }
+            100%{
+                opacity:0
+            }
+        }
+
+        @keyframes textAppear{
+            0%{
+                height: 0rem;
+            }
+            50%{
+                height: 0rem;
+            }
+
+            100%{
+                height: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="titleTextContainer"><h2 class="titleText">WELCOME</h2></div>
+</body>
+</html>
