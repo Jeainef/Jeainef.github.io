@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Screen</title>
+
+    <style>
+        body {
+            height: 100vh;
+            width: 100vw;
+            top: 0;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            place-content: center;
+
+            background-color: rgb(34, 34, 34);
+        }
+
+        .loadingIconContainer {
+            width: 10rem;
+            height: 10rem;
+
+        }
+
+        .loadingIcon {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform: rotate(45deg);
+            animation: rotate 2s ease infinite;
+        }
+
+        .loadingIcon div:nth-child(1) {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 7rem;
+            width: 7rem;
+            border: .3rem yellow double;
+            transition: .3s;
+            animation: expand_1 2s ease infinite;
+        }
+
+        .loadingIcon div:nth-child(2) {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 7rem;
+            width: 7rem;
+            border: .3rem cyan double;
+            transition: .3s;
+            animation: expand_2 2s ease infinite;
+        }
+
+        .loadingIcon div:nth-child(3) {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 7rem;
+            width: 7rem;
+            border: .3rem magenta double;
+            transition: .3s;
+            animation: expand_3 2s ease infinite;
+        }
+
+        .loadingIcon div:nth-child(4) {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 7.4rem;
+            width: 7.4rem;
+            background-color: white;
+        }
+
+        @keyframes expand_1 {
+            0% {
+                height: 7rem;
+                width: 7rem;
+            }
+
+            20% {
+                height: 9rem;
+                width: 9rem;
+            }
+
+            60% {
+                height: 9rem;
+                width: 9rem;
+            }
+
+            80% {
+                height: 7rem;
+                width: 7rem;
+            }
+
+            100% {
+                height: 7rem;
+                width: 7rem;
+            }
+        }
+
+        @keyframes expand_2 {
+            0% {
+                height: 7rem;
+                width: 7rem;
+            }
+
+            25% {
+                height: 12rem;
+                width: 12rem;
+            }
+
+            60% {
+                height: 12rem;
+                width: 12rem;
+            }
+
+            80% {
+                height: 7rem;
+                width: 7rem;
+            }
+
+            100% {
+                height: 7rem;
+                width: 7rem;
+            }
+        }
+
+        @keyframes expand_3 {
+            0% {
+                height: 7rem;
+                width: 7rem;
+            }
+
+            35% {
+                height: 10.5rem;
+                width: 10.5rem;
+            }
+
+            60% {
+                height: 10.5rem;
+                width: 10.5rem;
+            }
+
+            80% {
+                height: 7rem;
+                width: 7rem;
+            }
+
+            100% {
+                height: 7rem;
+                width: 7rem;
+            }
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(45deg);
+            }
+
+            30% {
+                transform: rotate(45deg);
+            }
+
+            50% {
+                transform: rotate(135deg);
+            }
+
+            100% {
+                transform: rotate(135deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loadingIconContainer">
+        <div class="loadingIcon">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</body>
+
+</html>
