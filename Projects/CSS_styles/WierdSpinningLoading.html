@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoadingCircle</title>
+
+    <style>
+                body {
+            height: 100vh;
+            width: 100vw;
+            top: 0;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            place-content: center;
+
+            background-color: rgb(34, 34, 34);
+        }
+        .loadingIconContainer{
+            position: fixed;
+            display: grid;
+            inset: 0;
+			place-content: center;
+        }
+        .CircleBack{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5rem;
+            height: 5rem;
+            border: rgba(0, 204, 240, 0.349) solid 1rem;
+            border-radius: 50%;
+        }
+        .CircleFront div{
+            position: absolute;
+            transform: translate();
+            top: 50%;
+            left: 50%;
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            border: rgb(0, 204, 240) solid 1rem;
+
+
+        }
+        .CircleFront div:nth-child(1){
+            border-top-color: transparent;
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+            animation: Rotate_1 infinite ease-in-out 1s;
+
+        }
+        .CircleFront div:nth-child(2){
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+            animation: Rotate_3 infinite ease-in-out 1s;
+
+        }
+        .CircleFront div:nth-child(3){
+            border-right-color: transparent;
+            border-top-color: transparent;
+            border-left-color: transparent;
+            animation: Rotate_4 infinite ease-in-out 1s;
+
+        }
+        .CircleFront div:nth-child(4){
+            border-bottom-color: transparent;
+            border-top-color: transparent;
+            border-right-color: transparent;
+            animation: Rotate_2 infinite ease-in-out 1s;
+        }
+        @keyframes Rotate_1 {
+            0%{
+                transform: rotate(0);
+            }
+            50%{
+                transform: rotate(360deg) translateX(5rem);
+            }
+
+            100%{
+                transform: rotate(720deg);
+            }
+        }
+        @keyframes Rotate_2 {
+            0%{
+                transform: rotate(0);
+            }
+            50%{
+                transform: rotate(360deg) translateX(-5rem);
+            }
+            100%{
+                transform: rotate(720deg);
+            }
+        }
+        @keyframes Rotate_3 {
+            0%{
+                transform: rotate(0);
+            }
+            50%{
+                transform: rotate(360deg) translateY(-7rem);
+            }
+            100%{
+                transform: rotate(720deg);
+            }
+        }
+        @keyframes Rotate_4 {
+            0%{
+                transform: rotate(0);
+            }
+            50%{
+                transform: rotate(360deg) translateY(7rem);
+            }
+            100%{
+                transform: rotate(720deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loadingIconContainer">
+        <div class="CircleBack"></div>
+        <div class="CircleFront">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</body>
+</html>
