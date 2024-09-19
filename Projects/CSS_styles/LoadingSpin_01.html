@@ -39,19 +39,20 @@
 
             width: 10rem;
             height: 10rem;
-            border: rgb(0, 204, 240) solid 2rem;
+            border: hsl(0, 100%, 50%) solid 2rem;
             border-radius: 50%;
             border-right-color: transparent;
             border-bottom-color: transparent;
             border-left-color: transparent;
 
-            animation: Rotate infinite ease-in-out 1s;
+            animation: Rotate infinite linear 1s;
         }
         @keyframes Rotate {
             From{
                 transform: rotate(0) ;
             }
             To{
+                filter: hue-rotate(360deg);
                 transform: rotate(360deg) ;
             }
         }
