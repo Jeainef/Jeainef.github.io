@@ -24,19 +24,22 @@
 			place-content: center;
         }
         .CircleBack{
-            position: absolute;
-            top: 50%;
-            left: 50%;
+            grid-column: 1;
+            grid-row: 1;
             width: 5rem;
             height: 5rem;
             border: rgba(0, 204, 240, 0.349) solid 1rem;
             border-radius: 50%;
         }
+        .CircleFront{
+            position: fixed;
+            display: grid;
+            inset: 0;
+			place-content: center;
+        }
         .CircleFront div{
-            position: absolute;
-            transform: translate();
-            top: 50%;
-            left: 50%;
+            grid-column: 1;
+            grid-row: 1;
             width: 5rem;
             height: 5rem;
             border-radius: 50%;
@@ -45,6 +48,7 @@
 
         }
         .CircleFront div:nth-child(1){
+            
             border-top-color: transparent;
             border-bottom-color: transparent;
             border-left-color: transparent;
