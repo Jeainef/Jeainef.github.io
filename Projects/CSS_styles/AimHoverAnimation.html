@@ -20,10 +20,12 @@
         }
 
         .loadingIconContainer {
-            position: fixed;
+            position: relative;
             display: grid;
             inset: 0;
             place-content: center;
+            width: 10rem;
+            height: 10rem;
         }
 
         .CircleBack {
@@ -31,17 +33,22 @@
             grid-row: 1;
             width: 5rem;
             height: 5rem;
-            border: rgba(0, 204, 240, 0.349) solid 1rem;
+            border: rgb(0, 217, 255) solid 1rem;
             border-radius: 50%;
 
-            animation: size_down infinite ease-in-out 5s;
+            transition-property: transform, filter;
+            transition-duration: 1s;
         }
 
         .CircleFront {
-            position: fixed;
+            position: relative;
             display: grid;
+            grid-column: 1;
+            grid-row: 1;
             inset: 0;
             place-content: center;
+            width: auto;
+            height: auto;
         }
 
         .CircleFront div {
@@ -50,7 +57,9 @@
             width: 5rem;
             height: 5rem;
             border-radius: 50%;
-            border: rgb(0, 204, 240) solid 1rem;
+            border: rgb(0, 217, 255) solid 1rem;
+
+            transition-duration: 1s;
 
 
         }
@@ -60,7 +69,6 @@
             border-top-color: transparent;
             border-bottom-color: transparent;
             border-left-color: transparent;
-            animation: Rotate_1 infinite ease-in-out 5s;
 
         }
 
@@ -68,7 +76,7 @@
             border-right-color: transparent;
             border-bottom-color: transparent;
             border-left-color: transparent;
-            animation: Rotate_3 infinite ease-in-out 5s;
+
 
         }
 
@@ -76,7 +84,7 @@
             border-right-color: transparent;
             border-top-color: transparent;
             border-left-color: transparent;
-            animation: Rotate_4 infinite ease-in-out 5s;
+
 
         }
 
@@ -84,82 +92,41 @@
             border-bottom-color: transparent;
             border-top-color: transparent;
             border-right-color: transparent;
-            animation: Rotate_2 infinite ease-in-out 5s;
+
         }
 
-        @keyframes size_down {
-            0% {
-                transform: scale(1)
-            }
 
-            50% {
-                transform: scale(.1);
-                filter: invert()
-            }
-
-            100% {
-                transform: scale(1)
-            }
+        .loadingIconContainer:hover .CircleBack {
+            transform: scale(.15);
+            filter: invert();
         }
 
-        @keyframes Rotate_1 {
-            0% {
-                transform: rotate(0);
-            }
-
-            50% {
-                transform: rotate(360deg) translateX(5rem);
-                filter: invert()
-            }
-
-            100% {
-                transform: rotate(720deg);
-            }
+        .loadingIconContainer:hover .CircleFront div {
+            scale: .5;
+            filter: invert();
         }
 
-        @keyframes Rotate_2 {
-            0% {
-                transform: rotate(0);
-            }
+        .loadingIconContainer:hover .CircleFront div:nth-child(1) {
+            transform: rotate(360deg) translateX(5rem);
 
-            50% {
-                transform: rotate(360deg) translateX(-5rem);
-                filter: invert()
-            }
 
-            100% {
-                transform: rotate(720deg);
-            }
         }
 
-        @keyframes Rotate_3 {
-            0% {
-                transform: rotate(0);
-            }
+        .loadingIconContainer:hover .CircleFront div:nth-child(2) {
+            transform: rotate(360deg) translateY(-5rem);
 
-            50% {
-                transform: rotate(360deg) translateY(-5rem);
-                filter: invert()
-            }
 
-            100% {
-                transform: rotate(720deg);
-            }
         }
 
-        @keyframes Rotate_4 {
-            0% {
-                transform: rotate(0);
-            }
+        .loadingIconContainer:hover .CircleFront div:nth-child(3) {
+            transform: rotate(360deg) translateY(5rem);
 
-            50% {
-                transform: rotate(360deg) translateY(5rem);
-                filter: invert()
-            }
 
-            100% {
-                transform: rotate(720deg);
-            }
+        }
+
+        .loadingIconContainer:hover .CircleFront div:nth-child(4) {
+            transform: rotate(360deg) translateX(-5rem);
+
         }
     </style>
 </head>

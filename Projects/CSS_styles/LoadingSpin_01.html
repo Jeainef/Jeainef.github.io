@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LoadingCircle</title>
 
     <style>
-                body {
+        body {
             height: 100vh;
             width: 100vw;
             top: 0;
@@ -17,25 +18,28 @@
 
             background-color: rgb(34, 34, 34);
         }
-        .loadingIconContainer{
+
+        .loadingIconContainer {
             position: fixed;
-			inset: 0;
-			z-index: 999;
-			background-color: #0c0603;
-			display: grid;
-			place-content: center;
+            inset: 0;
+            z-index: 999;
+            background-color: #0c0603;
+            display: grid;
+            place-content: center;
         }
-        .CircleBack{
+
+        .CircleBack {
             position: absolute;
-            top:50%;
-            left:50%;
-            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             width: 10rem;
             height: 10rem;
-            border: rgba(0, 204, 240, 0.349) solid 2rem;
+            border: rgba(61, 61, 61, 0.76) solid 2rem;
             border-radius: 50%;
         }
-        .CircleFront{
+
+        .CircleFront {
 
             width: 10rem;
             height: 10rem;
@@ -47,21 +51,25 @@
 
             animation: Rotate infinite linear 1s;
         }
+
         @keyframes Rotate {
-            From{
-                transform: rotate(0) ;
+            From {
+                transform: rotate(0);
             }
-            To{
+
+            To {
                 filter: hue-rotate(360deg);
-                transform: rotate(360deg) ;
+                transform: rotate(360deg);
             }
         }
     </style>
 </head>
+
 <body>
     <div class="loadingIconContainer">
         <div class="CircleBack"></div>
         <div class="CircleFront"></div>
     </div>
 </body>
+
 </html>
