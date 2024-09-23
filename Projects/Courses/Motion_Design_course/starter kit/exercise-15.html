@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,13 +19,85 @@
 		}
 
 		/* Air */
+		svg rect,
+		svg path {
+			stroke: #100319;
+			stroke-width: 20;
+			stroke-linecap: round;
+		}
+
+		svg {
+			overflow: visible;
+		}
 	</style>
 </head>
+
 <body>
 	<div class="container">
 		<!-- Air -->
+		<svg width="275" height="182" viewBox="0 0 275 182" fill="none">
+			<g id="Group 1">
+				<rect id="middle" x="95.25" y="10" width="84.5" height="161.5" rx="42.25" stroke="black" />
+				<path id="right"
+					d="M179.75 90.75V52.25C179.75 28.916 198.666 10 222 10V10C245.334 10 264.25 28.916 264.25 52.25V90.75"
+					stroke="black" />
+				<path id="left"
+					d="M10.75 90.5V129C10.75 152.334 29.666 171.25 53 171.25V171.25C76.334 171.25 95.25 152.334 95.25 129V90.5"
+					stroke="black" />
+
+			</g>
+
+		</svg>
 	</div>
 
 	<!-- Air -->
+	<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+	<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/DrawSVGPlugin.min.js"></script>
+
+	<script>
+
+		gsap.set("#middle", {
+			scale: 0,
+			transformOrigin: "50% 50%"
+		})
+
+
+		let tl = gsap.timeline({
+			repeat: -1,
+			repeatDelay: 1.2,
+			yoyo: true
+		})
+
+		tl.to("#middle", {
+			scale: 1,
+			rotation: 360,
+			duration: 1.2,
+			ease: "elastic.out"
+		})
+
+		//left
+		tl.fromTo('#left', {
+			drawSVG: '100% 100%'
+		},
+			{
+				drawSVG: '0% 100%',
+				duration: 1.2,
+				ease: 'power4.inOut'
+			})
+		tl.fromTo('#right', {
+			drawSVG: '0% 0%'
+		},
+			{
+				drawSVG: '0% 100%',
+				duration: 1.2,
+				ease: 'power4.inOut'
+			})
+
+		tl.to("#middle,#left,#right", {
+			stroke: "blue",
+			duration: 1
+		})
+	</script>
 </body>
+
 </html>
