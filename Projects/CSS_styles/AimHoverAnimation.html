@@ -36,8 +36,9 @@
             border: rgb(0, 217, 255) solid 1rem;
             border-radius: 50%;
 
+            transition-timing-function: cubic-bezier(.94, .02, .97, .73);
             transition-property: transform, filter;
-            transition-duration: 1s;
+            transition-duration: 2s;
         }
 
         .CircleFront {
@@ -59,8 +60,8 @@
             border-radius: 50%;
             border: rgb(0, 217, 255) solid 1rem;
 
-            transition-duration: 1s;
-
+            transition-duration: 2s;
+            transition-timing-function: cubic-bezier(.94, .02, .97, .73);
 
         }
 
@@ -107,25 +108,25 @@
         }
 
         .loadingIconContainer:hover .CircleFront div:nth-child(1) {
-            transform: rotate(360deg) translateX(5rem);
+            transform: rotate(180deg) translateX(5rem);
 
 
         }
 
         .loadingIconContainer:hover .CircleFront div:nth-child(2) {
-            transform: rotate(360deg) translateY(-5rem);
+            transform: rotate(180deg) translateY(-5rem);
 
 
         }
 
         .loadingIconContainer:hover .CircleFront div:nth-child(3) {
-            transform: rotate(360deg) translateY(5rem);
+            transform: rotate(180deg) translateY(5rem);
 
 
         }
 
         .loadingIconContainer:hover .CircleFront div:nth-child(4) {
-            transform: rotate(360deg) translateX(-5rem);
+            transform: rotate(180deg) translateX(-5rem);
 
         }
     </style>
