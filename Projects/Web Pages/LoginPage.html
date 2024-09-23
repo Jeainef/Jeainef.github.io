@@ -88,7 +88,7 @@
         }
 
         .Input-button {
-
+            font-size: 16px;
             font-weight: bold;
             color: rgb(84, 139, 0);
             width: 15rem;
@@ -96,7 +96,7 @@
             border-radius: .3rem;
             border: rgb(39, 39, 39) solid 3px;
 
-            transition: .3s;
+            transition: .5s;
         }
 
         .Input-button:hover {
@@ -119,6 +119,26 @@
             fill: yellow;
             width: 0;
             animation: highlightanim 5s ease infinite alternate;
+        }
+
+        .Input-button.loading {
+            transition: .3s;
+            opacity: 0;
+            cursor: wait;
+        }
+
+        .Input-button.success {
+
+            background-color: green;
+            color: black;
+            opacity: 1;
+        }
+
+        .Input-button.failed {
+
+            background-color: red;
+            color: black;
+            opacity: 1;
         }
 
         @keyframes highlightanim {
@@ -153,17 +173,18 @@
         <div class="input_container">
             <div class="container">
                 <label for="uname">USERNAME</label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
+                <input class="username" type="text" placeholder="Enter Username" name="uname" required>
 
             </div>
             <div class="container">
                 <label for="password">PASSWORD</label>
 
-                <input type="password" placeholder="Enter password" name="password" required>
+                <input class="password" type="password" placeholder="Enter password" name="password" required>
 
             </div>
 
             <button class="Input-button">SUBMIT</button>
+
         </div>
         <div class="image_container">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 833.60436 638.22869"
@@ -216,6 +237,43 @@
         </div>
     </div>
 
+    <script>
+        const submitButton = document.querySelector('.Input-button')
+
+        const username = document.querySelector('.username')
+        const password = document.querySelector('.password')
+        submitButton.addEventListener('click', (e) => {
+            submitButton.innerHTML = " "
+            e.preventDefault()
+
+            //Add loading class
+            submitButton.classList.add("loading")
+            setTimeout(() => {
+                //remove loading class
+                if (username.value === "") {
+                    submitButton.classList.remove("loading")
+                    submitButton.innerHTML = "WRONG USERNAME"
+                    submitButton.classList.add("failed")
+
+                }
+                else if (password.value === "") {
+                    submitButton.classList.remove("loading")
+                    submitButton.innerHTML = "NO PASSWORD"
+                    submitButton.classList.add("failed")
+
+                }
+                else {
+                    submitButton.classList.remove("loading")
+                    submitButton.classList.add("success")
+
+                    //Change button text
+                    submitButton.innerHTML = "LOGIN SUCCESFUL"
+                }
+
+
+            }, 4000)
+        })
+    </script>
 </body>
 
 </html>
