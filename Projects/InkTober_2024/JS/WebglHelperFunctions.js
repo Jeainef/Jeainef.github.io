@@ -46,3 +46,35 @@ export function CreateShader(context, frag, vert){
     var program=CreateProgram(context,vertexShader,fragmentShader);
     return program;
 }
+
+export function DrawRectangle(context,x,y,width,height){
+    var x1=x;
+    var x2=x+width;
+
+    var y1=y;
+    var y2=y+height;
+
+    var positions=[
+        x1,y1,
+        x2,y1,
+        x2,y2,
+        x2,y2,
+        x1,y1,
+        x1,y2
+
+    ]
+
+    context.bufferData(context.ARRAY_BUFFER, new Float32Array(positions),context.STATIC_DRAW);
+
+    context.drawArrays(context.TRIANGLES, 0, 6);
+
+}
+
+export function ClearViewport(context,canvas,color){
+    context.viewport(0,0,canvas.width,canvas.height);
+    context.viewport(0, 0, context.canvas.width, context.canvas.height);
+
+
+    context.clearColor(color[0],color[1],color[2],color[3]);
+    context.clear(context.COLOR_BUFFER_BIT);
+}
