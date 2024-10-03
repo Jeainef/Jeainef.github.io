@@ -18,7 +18,7 @@ var vertexShader = /*glsl*/ `
     varying vec2 clipSpace;
     varying float time;
     void main(){
-        clipSpace= (a_position/u_resolution) * 2.0 - 1.0;
+        clipSpace= (a_position/u_resolution)*2.0 -1.0;
         clipSpace.x = clipSpace.x *  u_resolution.x/u_resolution.y;
         time= u_time/1000.0;
         gl_Position= vec4(clipSpace,0,1);
@@ -29,9 +29,20 @@ var fragmentShader = /*glsl*/ `
     
     varying float time;
     varying vec2 clipSpace;
+    float plot(vec2 st, float pct){
+        return  smoothstep( pct-0.02, pct, st.y) -
+                smoothstep( pct, pct+0.02, st.y);
+      }
     void main(){
 
-        gl_FragColor=vec4(1,0,0,1);
+        vec2 ul=(clipSpace +1.0) / 2.0;
+        float y=smoothstep(0.1,0.9,ul.x);
+
+        vec3 color=vec3(y);
+        float pct = plot(ul,y);
+        color= (1.0-pct)* color + pct* vec3(0.0,1.0,0.0);
+        gl_FragColor=vec4(color,1.0);
+
     }
 
 `
