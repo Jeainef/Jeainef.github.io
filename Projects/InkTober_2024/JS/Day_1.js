@@ -70,7 +70,6 @@ gl.useProgram(program);
 gl.enableVertexAttribArray(resolutionUniformLocation);
 
 // Bind the position buffer.
-gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
 
 gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height);
 

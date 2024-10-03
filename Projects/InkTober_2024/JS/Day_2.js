@@ -59,7 +59,7 @@ var fragmentShader =  /*glsl*/ `
 var program = CreateShader(gl, fragmentShader, vertexShader);
 gl.useProgram(program);
 
-ClearViewport(gl, canvas, [1, 1, 1, 1]);
+ClearViewport(gl, canvas, [0, 0, 0, 1]);
 
 
 
@@ -76,7 +76,7 @@ gl.enableVertexAttribArray(resolutionUniformLocation);
 
 gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height);
 
-gl.vertexAttribPointer(positionAttributeLocation, 2, gl.FLOAT, false, 0, 0)
+gl.vertexAttribPointer(positionAttributeLocation, 2, gl.FLOAT, false, 0, 0);
 
 
 function DrawLoop(timeStamp) {
