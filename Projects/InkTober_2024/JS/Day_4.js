@@ -20,7 +20,6 @@ var vertexShader = /*glsl*/ `
 
     void main(){
         clipSpace= (a_position/u_resolution)*2.0 -1.0;
-        clipSpace.x = clipSpace.x *  u_resolution.x/u_resolution.y;
 
         resolution = u_resolution;
         
@@ -36,14 +35,21 @@ var fragmentShader = /*glsl*/ `
     
     float circleShape(vec2 position, float radius){
         return 
-        step(radius, length(position)) - step(radius +0.1, length(position))
-        + step(radius+0.2, length(position))  - step(radius +0.3, length(position))
-        ;
+        step(radius, length(position));
+    }
+    float squareShape(vec2 position, vec2 scale){
+        scale = vec2(0.5) - scale*0.5;
+        position += 0.5;
+        vec2 shaper = vec2(step(scale.x,position.x), step(scale.y,position.y));
+
+        shaper *= vec2(step(scale.x, 1.0 - position.x), step(scale.y,1.0-position.y));
+
+        return shaper.x * shaper.y;
     }
     void main(){
 
-        float circle =  circleShape(clipSpace,0.4);
-        vec3 color = vec3(circle);
+        float square =  squareShape(clipSpace,vec2(.5));
+        vec3 color = vec3(1.0-square) * 0.3;
 
         gl_FragColor = vec4(color,1);
 
