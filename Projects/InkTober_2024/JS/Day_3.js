@@ -36,8 +36,7 @@ var fragmentShader = /*glsl*/ `
     void main(){
 
         vec2 ul=(clipSpace +1.0) / 2.0;
-        float y=smoothstep(0.1,0.9,ul.x);
-
+        float y= smoothstep(0.4,0.5,ul.x) - smoothstep(0.5,0.6,ul.x);
         vec3 color=vec3(y);
         float pct = plot(ul,y);
         color= (1.0-pct)* color + pct* vec3(0.0,1.0,0.0);
