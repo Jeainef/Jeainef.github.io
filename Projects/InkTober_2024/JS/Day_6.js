@@ -37,11 +37,12 @@ var vertexShader = /*glsl*/ `
     varying vec2 mousePosition;
     varying float time;
     void main(){
-
+        float aspectRatio=u_resolution.x/u_resolution.y;
         mousePosition=(u_mouse/u_resolution) *2.0 - 1.0;
         mousePosition.y=-mousePosition.y;
         time=u_time/1000.0;
         clipSpace = (a_position/u_resolution) * 2.0 - 1.0;
+        clipSpace.x*aspectRatio;
         gl_Position = vec4(clipSpace,0,1);
     }
 
