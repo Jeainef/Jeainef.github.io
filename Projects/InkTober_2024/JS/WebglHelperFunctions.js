@@ -27,7 +27,7 @@ function CreateProgram(gl, vertex_shader, fragment_shader) {
     //Check if it works correctly
     var success = gl.getProgramParameter(program, gl.LINK_STATUS);
     if (success) return program;
-    else console.log("The program failed to link. Check if the shaders are correct");
+    else console.log(gl.getProgramInfoLog(program));
 }
 
 
@@ -78,3 +78,4 @@ export function ClearViewport(context, canvas, color) {
     context.clearColor(color[0], color[1], color[2], color[3]);
     context.clear(context.COLOR_BUFFER_BIT);
 }
+
