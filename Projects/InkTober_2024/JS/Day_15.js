@@ -68,8 +68,8 @@ var resolutionUniformLocationID = gl.getUniformLocation(program, "u_resolution")
 gl.uniform2f(resolutionUniformLocationID, canvas.width, canvas.height);
 
 var timeUniformLocationID = gl.getUniformLocation(program, "u_time");
-function DrawLoop(timeStamp) {
 
+function DrawLoop(timeStamp) {
     gl.uniform1f(timeUniformLocationID, timeStamp / 1000);
     DrawRectangle(gl, 0, 0, canvas.width, canvas.height);
 
