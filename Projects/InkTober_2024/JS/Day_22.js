@@ -13,16 +13,16 @@ var gl = canvas.getContext("webgl");
 var vertexShader = /*glsl*/`
 
     attribute vec3 a_position;
-    attribute vec2 a_texture;
+  
 
     uniform mat4 u_world_matrix;
     uniform mat4 u_projection_matrix;
     uniform mat4 u_view_matrix;
 
     varying vec3 ul;
-    varying vec2 vertTextCoord;
+
     void main(){
-        vertTextCoord = a_texture;
+
         gl_Position = u_projection_matrix * u_view_matrix * u_world_matrix * vec4(a_position,1);
     }
 
@@ -32,50 +32,49 @@ var fragmentShader = /*glsl*/`
     precision mediump float;
 
     varying vec3 ul;
-    varying vec2 vertTextCoord;
 
-    uniform sampler2D sampler;
+
 
     void main(){
-        gl_FragColor = texture2D(sampler,vertTextCoord);
+        gl_FragColor = vec4(1,0,0,1);
     }
 `
 const vertices = [
     // Top
-    -1.0, 1.0, -1.0, 0.5, 0,
-    -1.0, 1.0, 1.0, 0.5, 0.333333,
-    1.0, 1.0, 1.0, 0.25, 0.333333,
-    1.0, 1.0, -1.0, 0.25, 0,
+    -1.0, 1.0, -1.0, 
+    -1.0, 1.0, 1.0,
+    1.0, 1.0, 1.0, 
+    1.0, 1.0, -1.0, 
 
     // Left
-    -1.0, 1.0, 1.0, 0.25, 0.3333333,
-    -1.0, -1.0, 1.0, 0.25, 0.6666667,
-    -1.0, -1.0, -1.0, 0, 0.66666667,
-    -1.0, 1.0, -1.0, 0, 0.3333333,
+    -1.0, 1.0, 1.0, 
+    -1.0, -1.0, 1.0,  
+    -1.0, -1.0, -1.0, 
+    -1.0, 1.0, -1.0, 
 
     // Right
-    1.0, 1.0, 1.0, 0.25, 0.3333333,
-    1.0, -1.0, 1.0, 0.25, 0.6666667,
-    1.0, -1.0, -1.0, 0, 0.6666667,
-    1.0, 1.0, -1.0, 0, 0.3333333,
+    1.0, 1.0, 1.0,
+    1.0, -1.0, 1.0,  
+    1.0, -1.0, -1.0, 
+    1.0, 1.0, -1.0,
 
     // Front
-    1.0, 1.0, 1.0, 0.25, 0.3333,
-    1.0, -1.0, 1.0, 0.25, 0.6666,
-    -1.0, -1.0, 1.0, 0, 0.6666,
-    -1.0, 1.0, 1.0, 0, 0.3333,
+    1.0, 1.0, 1.0, 
+    1.0, -1.0, 1.0, 
+    -1.0, -1.0, 1.0, 
+    -1.0, 1.0, 1.0, 
 
     // Back
-    1.0, 1.0, -1.0, 0.25, 0.3333,
-    1.0, -1.0, -1.0, 0.25, 0.66667,
-    -1.0, -1.0, -1.0, 0, 0.66667,
-    -1.0, 1.0, -1.0, 0, 0.3333,
+    1.0, 1.0, -1.0, 
+    1.0, -1.0, -1.0, 
+    -1.0, -1.0, -1.0, 
+    -1.0, 1.0, -1.0, 
 
     // Bottom
-    -1.0, -1.0, -1.0, 0.25, 0.666667,
-    -1.0, -1.0, 1.0, 0.25, 1,
-    1.0, -1.0, 1.0, 0.5, 1,
-    1.0, -1.0, -1.0, 0.5, 0.666667
+    -1.0, -1.0, -1.0, 
+    -1.0, -1.0, 1.0, 
+    1.0, -1.0, 1.0, 
+    1.0, -1.0, -1.0, 
 
 ]
 
@@ -107,7 +106,7 @@ const indices = [
 
 const program = CreateShader(gl, fragmentShader, vertexShader);
 gl.useProgram(program);
-var imageTexture = document.getElementById("texture");
+
 
 //BUFFERS
 
@@ -118,21 +117,7 @@ gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
 
 //Texture2D buffer
 
-var textureBuffer = gl.createTexture();
-gl.bindTexture(gl.TEXTURE_2D, textureBuffer);
 
-gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-
-gl.enable(gl.DEPTH_TEST);
-gl.enable(gl.CULL_FACE);
-gl.cullFace(gl.BACK);
-
-
-gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, imageTexture);
-gl.activeTexture(gl.TEXTURE0);
 
 //Element data buffer
 var elementArrayBuffer = gl.createBuffer();
@@ -145,17 +130,13 @@ gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW)
 
 //Position
 let positionAttributeLocation = gl.getAttribLocation(program, "a_position");
-gl.vertexAttribPointer(positionAttributeLocation, 3, gl.FLOAT, false, 5 * Float32Array.BYTES_PER_ELEMENT, 0);
+gl.vertexAttribPointer(positionAttributeLocation, 3, gl.FLOAT, false, 3 * Float32Array.BYTES_PER_ELEMENT, 0);
 gl.enableVertexAttribArray(positionAttributeLocation);
 
-let textureAttributeLocation = gl.getAttribLocation(program, "a_texture");
-gl.vertexAttribPointer(textureAttributeLocation, 2, gl.FLOAT, false, 5 * Float32Array.BYTES_PER_ELEMENT, 3 * Float32Array.BYTES_PER_ELEMENT);
 
-gl.enableVertexAttribArray(textureAttributeLocation);
 
 //STATIC UNIFORMS
-let colorUniformLocation = gl.getUniformLocation(program, "u_color");
-gl.uniform3f(colorUniformLocation, 0, 1, 0);
+
 
 let world_matrix = new Float32Array(16);
 mat4.identity(world_matrix);
@@ -176,7 +157,45 @@ gl.uniformMatrix4fv(view_matrix_location, gl.FALSE, view_matrix);
 
 
 
-var angle = 0;
+
+
+
+let dragging=false;
+let mouseDragStart=[
+    0,0
+]
+let moveCoords=[
+    0,0
+]
+window.addEventListener("mousedown", (event) => {
+
+    dragging=true;
+    mouseDragStart=[event.x,event.y];
+    console.log("dragging");
+
+
+});
+
+window.addEventListener("mouseup", (event) => {
+
+    dragging=false;
+    moveCoords=[0,0]
+    console.log("Dropped");
+
+
+});
+window.addEventListener("mousemove", (event) => {
+
+    if(!dragging) return;
+    moveCoords=[ (event.x - mouseDragStart[0])/canvas.width ,(event.y - mouseDragStart[1])/canvas.height]
+    console.log(moveCoords);
+
+
+});
+
+var angle = [2 * Math.PI ,2*Math.PI];
+
+;
 var iMatrix = new Float32Array(16);
 mat4.identity(iMatrix);
 
@@ -184,11 +203,11 @@ var xRotation = new Float32Array(16);
 var yRotation = new Float32Array(16);
 
 function DrawLoop(timeStamp) {
-    angle = 2 * Math.PI;
+    angle[0] += moveCoords[0]/10;
+    angle[1] -= moveCoords[1]/10;
+    mat4.rotate(xRotation, iMatrix, angle[1], [1, 0, 0]);
 
-    mat4.rotate(xRotation, iMatrix, angle / 4, [1, 0, 0]);
-
-    mat4.rotate(yRotation, iMatrix, angle, [0, 1, 0]);
+    mat4.rotate(yRotation, iMatrix, angle[0] , [0, 1, 0]);
 
     mat4.mul(world_matrix, yRotation, xRotation);
 
