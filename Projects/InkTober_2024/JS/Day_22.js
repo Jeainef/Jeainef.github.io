@@ -22,7 +22,7 @@ var vertexShader = /*glsl*/`
     varying vec3 ul;
 
     void main(){
-
+        ul=a_position;
         gl_Position = u_projection_matrix * u_view_matrix * u_world_matrix * vec4(a_position,1);
     }
 
@@ -32,11 +32,14 @@ var fragmentShader = /*glsl*/`
     precision mediump float;
 
     varying vec3 ul;
-
-
-
+    uniform float u_time;
     void main(){
-        gl_FragColor = vec4(1,0,0,1);
+        vec3 color=vec3(0.0);
+        color.r=1.-smoothstep(0.,.3,abs(sin(atan(ul.x)+u_time*4.)*2.));
+        color.g=1.-smoothstep(0.,.3,abs(sin(ul.y+u_time*8.)*5.));
+        color.b=1.-smoothstep(0.,.3,abs(sin(ul.z+u_time*12.)*12.));
+
+        gl_FragColor = vec4(color,1);
     }
 `
 const vertices = [
@@ -155,6 +158,9 @@ let view_matrix_location = gl.getUniformLocation(program, "u_view_matrix");
 gl.uniformMatrix4fv(view_matrix_location, gl.FALSE, view_matrix);
 
 
+gl.enable(gl.DEPTH_TEST);
+gl.enable(gl.CULL_FACE);
+gl.cullFace(gl.BACK);
 
 
 
@@ -194,7 +200,7 @@ window.addEventListener("mousemove", (event) => {
 });
 
 var angle = [2 * Math.PI ,2*Math.PI];
-
+var angleTarget=[2 * Math.PI ,2*Math.PI];
 ;
 var iMatrix = new Float32Array(16);
 mat4.identity(iMatrix);
@@ -202,9 +208,15 @@ mat4.identity(iMatrix);
 var xRotation = new Float32Array(16);
 var yRotation = new Float32Array(16);
 
+var drag=0.2
+
+var timeUniformID=gl.getUniformLocation(program,"u_time");
 function DrawLoop(timeStamp) {
-    angle[0] += moveCoords[0]/10;
-    angle[1] -= moveCoords[1]/10;
+    angleTarget[0] += moveCoords[0]/10;
+    angleTarget[1] -= moveCoords[1]/10;
+
+    angle[0] += (angleTarget[0]-angle[0]) * drag;
+    angle[1] += (angleTarget[1]-angle[1]) * drag;
     mat4.rotate(xRotation, iMatrix, angle[1], [1, 0, 0]);
 
     mat4.rotate(yRotation, iMatrix, angle[0] , [0, 1, 0]);
@@ -212,7 +224,7 @@ function DrawLoop(timeStamp) {
     mat4.mul(world_matrix, yRotation, xRotation);
 
     gl.uniformMatrix4fv(world_matrix_location, gl.FALSE, world_matrix);
-
+    gl.uniform1f(timeUniformID,timeStamp/1000);
     ClearViewport(gl, canvas, [1, 1, 1, 1]);
     gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
 

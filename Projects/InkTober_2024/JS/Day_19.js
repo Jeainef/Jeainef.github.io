@@ -184,7 +184,7 @@ var xRotation = new Float32Array(16);
 var yRotation = new Float32Array(16);
 
 function DrawLoop(timeStamp) {
-    angle = 2 * Math.PI;
+    angle = timeStamp / 1000 / 6 * 2 * Math.PI;
 
     mat4.rotate(xRotation, iMatrix, angle / 4, [1, 0, 0]);
 
