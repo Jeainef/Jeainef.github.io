@@ -33,6 +33,11 @@ var fragmentShader = /*glsl*/`
     float rand (vec2 ul){
         return fract(sin(dot(ul,vec2(12.23232,72.223232)))*43758.23232);
     }
+    float interpolate(float a, float b, float c, float d, vec2 s){
+        float up = mix(a,b,s.x);
+        float down = mix(c,d,s.x);
+        return mix(up,down,s.y);
+    }
     float noise(vec2 ul){
         vec2 i = floor(ul);
         vec2 f = fract(ul);
@@ -44,15 +49,16 @@ var fragmentShader = /*glsl*/`
 
         vec2 s =smoothstep(0.,1.,f);
 
-        return mix(a, b, s.x) +
-        (c - a)* s.y * (1.0 - s.x) +
-        (d - b) * s.x * s.y;
+        return interpolate(a,b,c,d,s);
     }
     void main(){
 
         vec3 color = vec3(0);
-        color= vec3(noise(ul*5.));
+        float noise=noise(ul+vec2(u_time*0.2)*5.)*noise(ul*5.+vec2(cos(u_time)*0.5,sin(u_time)));
 
+        color= vec3(smoothstep(0.,1.,noise));
+        vec3 icolor = 1.-color;
+        color += icolor * vec3(0.1,0.2,0.4);
         
 
         gl_FragColor=vec4(color,1);
