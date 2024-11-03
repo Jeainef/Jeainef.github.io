@@ -12,10 +12,51 @@
             width: 100vw;
             height: 100vh;
         }
+        .commands{
+            font-size: 10px;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 30%;
+            min-height: 50%;
+
+            padding: 1rem;
+            background-color: rgba(97, 97, 97, 0.63);
+            border: 1px solid black;
+        }
+        h1{
+            text-align: center;
+            color: white;
+        }
+        .slidecontainer{
+            width: 100%;
+        }
+        .slider{
+            width: 100%;
+        }
+        canvas{
+            z-index:   -999;
+        }
     </style>
 </head>
 <body>
     <canvas id="canvas"></canvas>
+    <div class="commands">
+        <div class="slidecontainer">
+            <h1>SPEED</h1>
+            <input type="range" min="0" max="500" value="50" class="slider" id="timeSlider">
+          </div>
+          <div class="slidecontainer">
+            <h1>SIZE</h1>
+            <input type="range" min="1" max="20" value="5" class="slider" id="sizeSlider">
+          </div>
+          <div class="slidecontainer">
+            <h1>REPETITIONS</h1>
+            <input type="range" min="1" max="15" value="1" class="slider" id="fractSlider">
+          </div>
+    </div>
     <script src="JS/gl-matrix.js"></script>
     <script src="JS/Shaders/VoronoiNoise.js" type="module"></script>
 
