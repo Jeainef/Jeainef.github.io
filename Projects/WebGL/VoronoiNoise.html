@@ -39,6 +39,12 @@
         canvas{
             z-index:   -999;
         }
+        .colorContainer{
+            width: 100%;
+        }
+        .color{
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -55,6 +61,14 @@
           <div class="slidecontainer">
             <h1>REPETITIONS</h1>
             <input type="range" min="1" max="15" value="1" class="slider" id="fractSlider">
+          </div>
+          <div class="colorContainer">
+            <h1>MAIN COLOR</h1>
+            <input type="COLOR" id="mainColor" value="#ffffff" class="color">
+          </div>
+          <div class="colorContainer">
+            <h1>SECONDARY COLOR</h1>
+            <input type="COLOR" id="secondaryColor" value="#000000" class="color">
           </div>
     </div>
     <script src="JS/gl-matrix.js"></script>

@@ -1,4 +1,4 @@
-import { CreateShader, ClearViewport, DrawRectangle } from "/Projects/WebGL/JS/WebglHelperFunctions.js";
+import { CreateShader, ClearViewport, DrawRectangle, hexToRgb } from "/Projects/WebGL/JS/WebglHelperFunctions.js";
 
 const { vec2, vec3, mat3, mat4 } = glMatrix;
 
@@ -9,12 +9,15 @@ var timeSlider = document.getElementById("timeSlider");
 var sizeSlider = document.getElementById("sizeSlider");
 var repetitionSlider = document.getElementById("fractSlider");
 
+var mainColor = document.getElementById("mainColor");
+var secondaryColor = document.getElementById("secondaryColor");
+
 //Values
 var timeMultiplier = timeSlider.value/100;
 var tileSize = sizeSlider.value;
 var repeatingAmount = repetitionSlider.value;
-
-
+var mainColorRGB = hexToRgb(mainColor.value);
+var secondaryColorRGB = hexToRgb(secondaryColor.value);
 //Set Canvas size and context
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -42,6 +45,8 @@ var fragmentShader= /*glsl*/ `
     uniform float u_time;
     uniform vec2 u_resolution;
     uniform vec2 u_mousePos;
+    uniform vec3 u_mainColor;
+    uniform vec3 u_secondaryColor;
 
     uniform float u_size;
     uniform int u_repeating;
@@ -87,6 +92,9 @@ var fragmentShader= /*glsl*/ `
         }
 
         vec3 backgroundColor = 1.- color;
+
+        color *= u_mainColor;
+        color += backgroundColor*u_secondaryColor;
         //color= color* vec3(239./255.,228./255.,0.) + backgroundColor*vec3(0.,0.05,0.3);
          //color += 1. - step(0.1,minDistance);
         gl_FragColor= vec4(color,1);
@@ -116,8 +124,13 @@ gl.uniform2f(resolutionUniformID,canvas.width,canvas.height);
 var repeatUniform = gl.getUniformLocation(program, "u_repeating");
 var tileSizeUniform = gl.getUniformLocation(program, "u_size");
 
+var mainColorUniform = gl.getUniformLocation(program, "u_mainColor");
+var secondaryColorUniform = gl.getUniformLocation(program, "u_secondaryColor");
+
 gl.uniform1f(tileSizeUniform,tileSize);
 gl.uniform1i(repeatUniform,repeatingAmount);
+gl.uniform3f(mainColorUniform,mainColorRGB[0],mainColorRGB[1],mainColorRGB[2]);
+gl.uniform3f(secondaryColorUniform,secondaryColorRGB[0],secondaryColorRGB[1],secondaryColorRGB[2]);
 function DrawLoop(timeStamp) {
     gl.uniform1f(timeUniformID,timeStamp*timeMultiplier/1000);
    
@@ -140,4 +153,17 @@ repetitionSlider.oninput= function(){
     repeatingAmount=this.value;
     gl.uniform1i(repeatUniform,repeatingAmount);
     console.log(repeatingAmount);
+}
+
+mainColor.oninput= function(){
+    mainColorRGB = hexToRgb(this.value);
+    gl.uniform3f(mainColorUniform,mainColorRGB[0],mainColorRGB[1],mainColorRGB[2]);
+
+    console.log(mainColorRGB);
+}
+secondaryColor.oninput= function(){
+    secondaryColorRGB = hexToRgb(this.value);
+    gl.uniform3f(secondaryColorUniform,secondaryColorRGB[0],secondaryColorRGB[1],secondaryColorRGB[2]);
+
+    console.log(secondaryColorRGB);
 }
