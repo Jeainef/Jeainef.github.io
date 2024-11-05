@@ -89,9 +89,10 @@ var fragmentShader= /*glsl*/ `
                 }
             }
             finalminDistance=min(finalminDistance,minDistance);
-            color+=finalminDistance/(float(z));
-        }
+            color+=0.5*finalminDistance/(float(z));
+            color= min(color,1.);
 
+        }
         vec3 backgroundColor = 1.- color;
 
         color *= u_mainColor;
