@@ -59,7 +59,7 @@ var fragmentShader= /*glsl*/ `
     }
     void main(){
         //Set aspect ratio
-        vec2 coords =st;
+        vec2 coords =st+0.5;
         coords.x *= u_resolution.x/u_resolution.y;
 
 
@@ -71,8 +71,9 @@ var fragmentShader= /*glsl*/ `
         float finalminDistance = 1.;
         int repetitions = u_repeating;
         for(int z=1; z<=15; z++){
+
             if(z>u_repeating) break;
-            vec2 tiledCoords =coords * u_size * float(z);
+            vec2 tiledCoords =coords * u_size * float(z)*0.5;
             vec2 tileCoord = floor(tiledCoords);
             vec2 pixelCoord= fract(tiledCoords);
             for(int x=-1;x<=1; x++){
